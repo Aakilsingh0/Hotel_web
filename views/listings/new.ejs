@@ -1,0 +1,78 @@
+<style>
+    .add-btn{
+        background-color: #fe424d !important;
+        border: none;
+    }
+</style>
+
+<% layout("./layouts/boilerplate.ejs") -%>
+<div class="row mt-3">
+    <div class="col-8 offset-2">
+        <br><br>
+        <h3>Create a New Listing</h3>
+        <form action="/listings" method="POST" novalidate class="needs-validation" enctype="multipart/form-data">
+            
+            
+        <div class="mb-3">
+            <label for="title" class="form-label"> Title</label>
+            <input type="text" name="listing[title]" placeholder="Add a catchy title" class="form-control" required>
+            <div class="valid-feedback">Title Looks Good</div>
+            <div class="invalid-feedback">please fill the title</div>
+        </div>
+       <div class="mb-3">
+        <label for="description" class="form-label"> Description</label>
+        <textarea type="text"  name="listing[description]"  class="form-control" required></textarea>
+        <div class="invalid-feedback">please enter the description</div>
+       
+       </div>
+        <div class="mb-3">
+            <label for="images" class="form-label"> Upload file</label>
+            <input type="file"  name="listing[images]" placeholder=" images " class="form-control" required>
+            
+        </div>
+        <div class="row">
+            <div class="mb-3 col-md-4">
+                <label for="price" class="form-label"> price</label>
+                <input type="text"  name="listing[price]" placeholder="1200" class="form-control" required>
+                <div class="invalid-feedback">please fill the price</div>
+            </div>
+    
+    
+            <div class="mb-3 col-md-8">
+                <label for="country"  class="form-label">Country</label>
+                <input type="text"  name="listing[country]" placeholder="India" class="form-control" required>
+                <div class="invalid-feedback">please enter the country</div>
+            </div>
+
+        </div>
+        <div class="mb-3">
+            <label for="location"  class="form-label">Location</label>
+            <input type="text"  name="listing[location]" placeholder="Jaipur Rajasthan" class="form-control" required>
+            <div class="invalid-feedback">please enter the location</div>
+        </div>
+          
+        <button class="btn btn-dark add-btn mg-3">Add</button> <br><br>
+    </form>
+</div>
+</div>
+
+<script>
+    (() => {
+        'use strict'
+      
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll('.needs-validation')
+      
+        // Loop over them and prevent submission
+        Array.from(forms).forEach(form => {
+          form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+              event.preventDefault()
+              event.stopPropagation()
+            }
+      
+            form.classList.add('was-validated')
+          }, false)
+        })
+      })()
+</script>
